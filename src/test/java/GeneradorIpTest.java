@@ -1,23 +1,21 @@
+import org.junit.jupiter.api.RepeatedTest;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GeneradorIpTest {
     GeneradorIp generador = new GeneradorIp();
 
     @org.junit.jupiter.api.Test
+    @RepeatedTest(1000)
     void testgenerarNumero() {
-
-        for (int i = 0; i < 1000; i++) {
-            generador.generarNumero(0, 254);
-
-        }
-
-
+        int random = generador.generarNumero(0, 254);
+        assertTrue(random >= 0 && random <= 254);
     }
 
     @org.junit.jupiter.api.Test
+    @RepeatedTest(1000)
     void generarIp() {
-        generador.generarIp();
-
+        String ip = generador.generarIp();
+        assertTrue(ip.charAt(0)!=0 || ip.charAt(ip.length()-1) != 0);
     }
-
 }
